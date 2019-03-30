@@ -20,9 +20,10 @@ class Tree
   end
 
   def parent(id, tree=@tree)
+    puts tree
     return tree['id'] if tree['child'].detect { |c| c['id'] == id }
-    tree['child'].detect do |child|
+    tree['child'].map do |child|
       parent(id, child)
-    end
+    end.flatten.compact.first
   end
 end

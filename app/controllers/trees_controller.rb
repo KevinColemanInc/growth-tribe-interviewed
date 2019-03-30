@@ -7,12 +7,12 @@ class TreesController < ApplicationController
   end
 
   def parent
-    parent = @tree.parent(params[:parent_id])
+    parent = params[:parent_id] && @tree.parent(params[:parent_id].to_i)
     render_json(parent)
   end
 
   def child
-    child = @tree.child(params[:child_id])
+    child = params[:child_id] && @tree.child(params[:child_id].to_i)
     render_json(child)
   end
 
